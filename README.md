@@ -150,6 +150,24 @@ The company was migrating stock management systems from on-premise BIPROD to Azu
 
 ---
 
+### Visual Examples
+
+**Power BI Dashboard - Executive Summary:**
+
+![Executive Summary](screenshots/powerbi/page1_executive_summary.png)
+
+*Interactive dashboard showing overall alignment metrics and KPIs*
+
+---
+
+**Excel Validation - Size Counters:**
+
+![Excel Validation](screenshots/excel/ONLINESTOCKSIZECOUNTERS.png)
+
+*Detailed comparison table with match status categorization*
+
+---
+
 ## 📁 Project Structure
 ```
 stock-validation-framework/
