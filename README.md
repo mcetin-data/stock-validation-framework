@@ -291,9 +291,8 @@ SUMX(
 **Mehmet Cetin**  
 Data Analyst | BI Developer  
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://linkedin.com/in/yourprofile)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/mehmet-cetin-461674a4/)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/mcetin-data)
-[![Portfolio](https://img.shields.io/badge/Portfolio-View-green)](https://yourportfolio.com)
 
 ---
 
