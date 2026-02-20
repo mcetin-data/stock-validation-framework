@@ -84,10 +84,10 @@ Comprehensive validation of stock data migration from BIPROD (on-premise) to Azu
 |--------|-------|--------|------------|-----------|
 | **Total Records** | 7,850 | 7,823 | +27 | 99.7% |
 | **SIZECOUNTER_ONLINE** | Sum: 145,230 | Sum: 145,890 | -660 | 99.5% |
-| **SIZECOUNTER_JBC** | Sum: 89,450 | 89,450 | 0 | 100% |
+| **SIZECOUNTER_COMPANYA** | Sum: 89,450 | 89,450 | 0 | 100% |
 
 **Findings:**
-- ✅ JBC counter matches perfectly (0 difference)
+- ✅ Company A counter matches perfectly (0 difference)
 - ⚠️ Online counter shows minor gap of -660 units
 - ✅ Gap attributed to Azure containing more recent online stock movements
 - ✅ ITEM + COLOR granularity maintained
@@ -115,7 +115,7 @@ Comprehensive validation of stock data migration from BIPROD (on-premise) to Azu
 
 ---
 
-### 6. SC_ONLINESTOCKSIZECOUNTERS_CKS
+### 6. SC_ONLINESTOCKSIZECOUNTERS_COMPANYB
 
 **Status:** ⚠️ **DATA ISSUE IDENTIFIED - ENGINEERING ACTION REQUIRED**
 
@@ -128,7 +128,7 @@ Comprehensive validation of stock data migration from BIPROD (on-premise) to Azu
 - ❌ **CRITICAL:** Azure contains only 1,000 rows vs BIPROD's 13,629 rows
 - ❌ **92.7% of data missing** from Azure
 - ⚠️ Likely incomplete ETL load or view definition error
-- ⚠️ Affects CKS-specific inventory tracking
+- ⚠️ Affects Company B-specific inventory tracking
 
 **Recommendation:** **BLOCKED** - Requires immediate engineering investigation before production cutover
 
@@ -197,10 +197,10 @@ Net Difference: -10,461 units
 
 **Affected View:** Multiple (where applicable)  
 **Severity:** Low  
-**Impact:** Some products assigned to different entities (JBC vs GF) between systems  
+**Impact:** Some products assigned to different entities (Company A vs Company B) between systems  
 
 **Details:**
-- Product can exist in Azure as `AX_DATAAREAID = 'VJBC'` but in BIPROD as `AX_DATAAREAID = 'GF'`
+- Product can exist in Azure as `AX_DATAAREAID = 'VCOMPANYA'` but in BIPROD as `AX_DATAAREAID = 'COMPANYB'`
 - Occurs during entity reorganization in Azure
 - Affects aggregations if AX_DATAAREAID not included in GROUP BY
 
@@ -220,7 +220,7 @@ Net Difference: -10,461 units
 | **Views Validated** | 6 of 6 |
 | **Views Approved** | 5 of 6 (83%) |
 | **Overall Alignment** | 99% (excluding blocked view) |
-| **Critical Issues** | 1 (CKS view) |
+| **Critical Issues** | 1 (Company B view) |
 | **Data Quality Issues** | 2 (duplicates, entity mixing) |
 | **Total Records Validated** | 1,800,000+ |
 
@@ -236,7 +236,7 @@ Net Difference: -10,461 units
 - SC_ONLINESTOCKSIZECOUNTERS_HISTORY ✅
 
 **Blocked - Requires Fix:**
-- SC_ONLINESTOCKSIZECOUNTERS_CKS ❌
+- SC_ONLINESTOCKSIZECOUNTERS_COMPANYB ❌
 
 ---
 
@@ -244,10 +244,10 @@ Net Difference: -10,461 units
 
 ### Immediate Actions (Pre-Cutover)
 
-1. ✅ **Fix CKS view data gap** - Load missing 12,629 records
+1. ✅ **Fix Company B view data gap** - Load missing 12,629 records
 2. ✅ **Resolve Azure duplicates** - Implement deduplication
 3. ✅ **Add data quality constraints** - Prevent future duplicates
-4. ✅ **Re-validate CKS view** - Confirm 100% alignment post-fix
+4. ✅ **Re-validate Company B view** - Confirm 100% alignment post-fix
 
 ### Post-Cutover Monitoring
 
@@ -284,7 +284,7 @@ Net Difference: -10,461 units
 | STOCK_ONLINE_SKU | barcode + DATE_WID |
 | ONLINESTOCKSIZECOUNTERS | ITEM + COLOR |
 | ONLINESTOCKSIZECOUNTERS_HISTORY | ITEM + COLOR + DateSnapshot |
-| ONLINESTOCKSIZECOUNTERS_CKS | ITEM + COLOR + STOREID |
+| ONLINESTOCKSIZECOUNTERS_COMPANYB | ITEM + COLOR + STOREID |
 
 ---
 
