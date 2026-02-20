@@ -314,8 +314,4 @@ Data Analyst | BI Developer
 
 ---
 
-## 📄 License
-
-This project is available for educational and portfolio purposes.
-
-
+*This project demonstrates professional-level BI development, stakeholder collaboration, and end-to-end solution ownership. Available for discussion in technical interviews.*
