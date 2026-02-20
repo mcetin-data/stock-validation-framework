@@ -107,7 +107,7 @@ The company was migrating stock management systems from on-premise BIPROD to Azu
   - Stock Online Availability (current + historical)
   - Stock Online SKU (online/offline inventory)
   - Online Stock Size Counters (current + historical)
-  - CKS-specific size counters
+  - Company B-specific size counters
 - **Multiple granularity levels**: Total → Store → Barcode → Barcode+Store+Size
 
 ### 2. **Robust Comparison Logic**
@@ -139,7 +139,7 @@ The company was migrating stock management systems from on-premise BIPROD to Azu
 | **155 duplicate records in Azure** | Data quality issue affecting 8 unique barcodes | Documented for engineering team |
 | **10,461 unit QTY gap** | Traced to negative stock adjustments in Azure | Validated as expected behavior (Azure more current) |
 | **99% alignment at granular level** | Migration successful after corrections | Approved for production cutover |
-| **1 view with 92% missing data** | Azure incomplete for CKS view | Flagged for immediate engineering attention |
+| **1 view with 92% missing data** | Azure incomplete for Company B view | Flagged for immediate engineering attention |
 
 ### Technical Achievements
 
