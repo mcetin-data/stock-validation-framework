@@ -80,8 +80,8 @@ LEFT JOIN (
 **What Happened:**
 - Aggregated stock by `barcode + STOREID`
 - Differences mysteriously canceled out at aggregate level
-- Root cause: Same barcode existed in both JBC and GF entities
-- Opposite-signed quantities canceled each other (JBC: +100, GF: -100 = 0)
+- Root cause: Same barcode existed in both Company A and Company B entities
+- Opposite-signed quantities canceled each other (Company A: +100, Company B: -100 = 0)
 
 **Solution:**
 ```sql
@@ -383,7 +383,7 @@ Categorize findings:
 
 ❌ Actual Errors:
 - 155 duplicate records in Azure (ETL bug)
-- 92% missing data in CKS view (incomplete load)
+- 92% missing data in Company B view (incomplete load)
 ```
 
 **Communication Impact:**
@@ -525,14 +525,14 @@ Drill-down shows:
 ### Lesson 19: Flag Issues Early, Don't Wait for Perfect Analysis
 
 **Mistake I Made:**
-- Discovered CKS view had only 1,000 rows (vs 13,629 expected)
+- Discovered Company B view had only 1,000 rows (vs 13,629 expected)
 - Spent 2 hours investigating before reporting
 - Turned out to be simple: incomplete ETL load
 - Engineering team could have started fix immediately if I'd flagged it early
 
 **Better Approach:**
 ```
-Day 1, 10:00 AM: "Found potential issue - CKS view missing 92% of data"
+Day 1, 10:00 AM: "Found potential issue - Company B view missing 92% of data"
 Day 1, 10:30 AM: Engineering starts investigating
 Day 1, 2:00 PM: Root cause found and fix in progress
 ```
@@ -541,7 +541,7 @@ vs
 ```
 Day 1, 10:00 AM: Find issue
 Day 1, 12:00 PM: Still analyzing
-Day 1, 2:00 PM: Finally report "CKS view missing 92% of data"
+Day 1, 2:00 PM: Finally report "Company B view missing 92% of data"
 Day 1, 2:30 PM: Engineering starts investigating
 Day 2: Fix completed (1 day delay)
 ```
